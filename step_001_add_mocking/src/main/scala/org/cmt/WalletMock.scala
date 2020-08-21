@@ -19,11 +19,14 @@ class WalletMock private (context: ActorContext[Wallet.Command]) {
     Behaviors.receiveMessage {
       case DepositMoney(amount, replyTo) =>
         val newBalance = balance + amount
-        if (balance > 1000)
+        if (balance <= 100) {
           replyTo ! OperationSuccess(newBalance)
-        else
+          running(newBalance)
+        }
+        else {
           replyTo ! OperationFailed(balance)
-        running(newBalance)
+          Behaviors.same
+        }
       case WithdrawMoney(amount, replyTo) =>
         if (amount <= balance) {
           val newBalance = balance - amount

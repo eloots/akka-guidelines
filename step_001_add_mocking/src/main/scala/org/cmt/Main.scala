@@ -23,8 +23,8 @@ object ActorMain {
   def apply(): Behavior[NotUsed]  =
     Behaviors.setup { context =>
       val walletMock = context.spawn(Wallet.mock(WalletMock()), "wallet-mock")
-      val wallet = context.spawn(Wallet(), "wallet")
-      val walletHolder = context.spawn(WalletHolder(wallet),"wallet-holder")
+      //val wallet = context.spawn(Wallet(), "wallet")
+      val walletHolder = context.spawn(WalletHolder(walletMock),"wallet-holder")
 
       sendRandomOperations(walletHolder, context.log)
 

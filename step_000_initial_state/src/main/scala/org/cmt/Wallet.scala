@@ -19,8 +19,6 @@ object Wallet {
   final case class OperationSuccess(balance: Decimal) extends Response
   final case class OperationFailed(balance: Decimal) extends Response
 
-  def mock(initialBehavior: Behavior[Command]): Behavior[Command] = initialBehavior
-
   def apply(): Behavior[Command] =
     Behaviors.setup { context =>
       new Wallet(context).running(balance = 0)

@@ -1,9 +1,7 @@
-# Basic Scala CMT master master project
+# Basic Akka Typed application
 
 ## Description
 
-This project can be used as a template for a master
-project managed by the [Course Management Tools](https://github.com/eloots/course-management-tools)
+![Application](docs/images/guidelines-actors-and-messages.png)
 
-It contains 2 simple steps (or exercises)
-
+![Sample Run](docs/images/sample-run.png)
